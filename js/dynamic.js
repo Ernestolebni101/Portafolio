@@ -20,4 +20,4 @@ const typed = new Typed('.typed', {
     loopCount: false,
     showCursor: true
 });
-//************************************************************************************************ */
+// https://google-map-generator.com/ url para maps
