@@ -41,41 +41,47 @@ const technologys = [{
 
 const frameworks = [
     {
-        framework: "Express",
+        tec: "Express",
         proggress: "95%"
     },
     {
-        framework: "Nesjts",
+        tec: "Nesjts",
         proggress: "90%"
     },
     {
-        framework: "Asp.Net Core & Framework",
+        tec: "Asp.Net Core & Framework",
         proggress: "95%"
     },
     {
-        framework: "Flask",
+        tec: "Flask",
         proggress: "80%"
     },
     {
-        framework: "FastApi",
+        tec: "FastApi",
         proggress: "70%"
     },
     {
-        framework: "Pytorch",
+        tec: "Pytorch",
         proggress: "70%"
     },
     {
-        framework: "Angular",
+        tec: "Angular",
         proggress: "95%"
     }];
 
 //#endregion
 /*************************************  Generate HTML**************************** */
 const techSkill = document.getElementById('techSkill');
+const fSkills = document.getElementById('frameworkSkills')
 
 const showSkills = () => {
-    technologys.forEach((t) => {
-        const { tec, proggress } = t;
+    initElements(technologys, techSkill);
+    initElements(frameworks, fSkills);
+}
+
+const initElements = (content,superElement) => {
+    content.forEach(c => {
+        const { tec, proggress } = c;
         let elements = classDistributor(tecClasses,divGenerator(7));
         const candidate = elements.find(e => e.class == 'candidatos').element;
         const parcial = elements.find(e => e.class == 'parcial').element;
@@ -89,15 +95,13 @@ const showSkills = () => {
         percentagem.style =`width: ${proggress};`;
         percentagem_num.innerText = proggress;
         /** APPEND ELEMENTS */
-        
         info.appendChild(nome);
         progressBar.appendChild(percentagem);
         percentagem.appendChild(percentagem_num);
         parcial.append(info, progressBar);
         candidate.appendChild(parcial);
-        techSkill.appendChild(candidate);
-        console.log(candidate)
-    });
+        superElement.appendChild(candidate);
+    })
 }
 
 // CANDIDATO > PARCIAL
