@@ -120,6 +120,9 @@ const classDistributor = (classes, htmlElements) => {
     const divArray = [];
     if (htmlElements.length === classes.length) {
         for (const [index, element] of classes.entries()) {
+
+            if(Array.isArray(element))
+                 htmlElements[index].classList.add(...element);
             htmlElements[index].classList.add(element);
             divArray.push({
                 class: (Array.isArray(element)) ? element[0] : element,
